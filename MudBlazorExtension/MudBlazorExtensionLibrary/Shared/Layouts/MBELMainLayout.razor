@@ -3,8 +3,11 @@
 @inject MBELLayoutService LayoutService
 @implements IDisposable
 
-<MudRTLProvider RightToLeft="@LayoutService.RightToLeft"> <!-- hook up our LayoutService layout to the MudRTLProvider -->
-    <MudThemeProvider Theme="@LayoutService.Theme" DefaultScrollbar="@LayoutService.DefaultScrollbar" IsDarkMode="@LayoutService.IsDarkMode" IsDarkModeChanged="@LayoutService.SetIsDarkMode" /> <!-- hook up our LayoutService's theming to the MudThemeProvider -->
+<!-- Hook up our LayoutService layout to the MudRTLProvider. -->
+<MudRTLProvider RightToLeft="@LayoutService.RightToLeft">
+    <!-- Hook up our LayoutService's theming to the MudThemeProvider. -->
+    <!-- Note: We disable `ObserveSystemThemeChange` because it kept turning the resume page to dark mode for some reason whenever you print the page and cancel. It seems that disabling this feature brings back the original behavior of the older MudBlazor version. This is obviously not an ideal solution and not generalized, but I'm never going to use MudBlazor again anyways so I don't need true solutions right now. -->
+    <MudThemeProvider Theme="@LayoutService.Theme" DefaultScrollbar="@LayoutService.DefaultScrollbar" IsDarkMode="@LayoutService.IsDarkMode" IsDarkModeChanged="@LayoutService.SetIsDarkMode" ObserveSystemThemeChange="false" />
     <MudPopoverProvider />
     <MudDialogProvider />
     <MudSnackbarProvider />
