@@ -5,6 +5,7 @@
 
 <MudRTLProvider RightToLeft="@LayoutService.RightToLeft"> <!-- hook up our LayoutService layout to the MudRTLProvider -->
     <MudThemeProvider Theme="@LayoutService.Theme" DefaultScrollbar="@LayoutService.DefaultScrollbar" IsDarkMode="@LayoutService.IsDarkMode" IsDarkModeChanged="@LayoutService.SetIsDarkMode" /> <!-- hook up our LayoutService's theming to the MudThemeProvider -->
+    <MudPopoverProvider />
     <MudDialogProvider />
     <MudSnackbarProvider />
     @Body
